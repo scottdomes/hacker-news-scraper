@@ -7,6 +7,7 @@ class Post
     @points = get_points 
     @id = get_id
     @comments = []
+    get_comments
   end
 
   def get_points
@@ -18,4 +19,15 @@ class Post
     id[0].scan(/\d+/)[0].to_i
   end
 
+  def get_comments
+    page_comments = @page.search('.comment-tree .athing')
+    page_comments.each do |comment|
+      comments << Comment.new(comment)
+    end
+    comments
+  end
+
 end
+
+# post = Post.new('post.html', 'http://post.com')
+# post.get_comments.inspect

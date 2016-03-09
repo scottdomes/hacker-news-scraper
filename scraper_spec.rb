@@ -1,6 +1,7 @@
 require 'rspec'
 require_relative 'scraper'
 require_relative 'post_class'
+require_relative 'comment'
 
 # describe "#user_input" do
 
@@ -72,8 +73,52 @@ describe "Post" do
     expect(@post.id).to eq(11253321)
   end
 
-  it "should have a @comments variable set to an empty array" do
-    expect(@post.comments).to eq([])
+  it "should have a @comments variable which is an array" do
+    expect(@post.comments).to be_kind_of(Array)
+  end
+
+  it "should have actual Comments in the @comments array" do
+    expect(@post.comments.first).to be_kind_of(Comment)
+  end
+
+  describe "get_comments" do
+
+    xit "should search @page for the comments" do
+      expect(@post.page).to receive(:search).with (".athing")
+      @post.get_comments
+    end
+
+    it "should create new comments" do
+      expect(Comment).to receive(:new).at_least(:once)
+      @post.get_comments
+    end
+
+  end
+
+end
+
+describe "Comment" do 
+
+  before :each do
+    @post = Post.new('post.html', 'http://post.com')
+    @comments = @post.comments
+    @first_comment = @post.comments[0]
+  end
+
+  # xit "should have a @html variable set to the parameter" do
+  #   expect(Comment.new("Hi!").html).to eq("Hi!")
+  # end
+
+  it "should have an @html variable that is a Nokogiri XML Element" do
+    expect(@first_comment.html).to be_kind_of(Nokogiri::XML::Element)
+  end
+
+  it "should have a @username variable set to the correct username" do
+    expect(@first_comment.username).to eq('neduma')
+  end
+
+  it "should have a @content variable set to the actual comment text" do
+    expect(@first_comment.content). to eq("How do they 'externalize config' with respect to http://12factor.net/config?")
   end
 
 end
