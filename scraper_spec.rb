@@ -3,49 +3,49 @@ require_relative 'scraper'
 require_relative 'post_class'
 require_relative 'comment'
 
-# describe "#user_input" do
+describe "#user_input" do
 
-#   # xit "should receive ARGV as its input" do
-#   # end
+  # xit "should receive ARGV as its input" do
+  # end
 
-#   # xit "should call is_url?" do
-#   #   expect(is_url?("sdfss")).to eq(true || false)
-#   # end
+  # xit "should call is_url?" do
+  #   expect(is_url?("sdfss")).to eq(true || false)
+  # end
 
-#   xit "should create a new Post object and pass the URL- if the URL is valid" do
-#     expect(Post).to receive(:new).with("http://www.google.ca")
-#     user_input("http://www.google.ca")
-#   end
+  xit "should create a new Post object and pass the URL- if the URL is valid" do
+    expect(Post).to receive(:new).with("http://www.google.ca")
+    user_input("http://www.google.ca")
+  end
 
-#   it "should return an error message if the URL is not valid" do
-#     expect(user_input("foo")).to eq("Please enter a real URL")
-#   end
+  it "should return an error message if the URL is not valid" do
+    expect(user_input("foo")).to eq("Please enter a real URL")
+  end
 
-#   it "should return the Post object if created" do
-#     expect(user_input("http://www.google.ca")).to be_kind_of(Post)
-#   end
+  # it "should return the Post object if created" do
+  #   expect(user_input("http://www.google.ca")).to be_kind_of(Post)
+  # end
 
-# end
+end
 
-# describe "#is_url?" do
+describe "#is_url?" do
 
-#   it "should return false if ARGV is not a URL" do
-#     expect(is_url?("foo")).to eq(false)
-#   end
+  it "should return false if ARGV is not a URL" do
+    expect(is_url?("foo")).to eq(false)
+  end
 
-#   it "should return true if ARGV is a URL" do
-#     expect(is_url?("http://www.google.ca")).to eq(true)
-#   end
+  it "should return true if ARGV is a URL" do
+    expect(is_url?("http://www.google.ca")).to eq(true)
+  end
 
-# end
+end
 
-# describe "parse_file" do
+describe "parse_file" do
 
-#   xit "should return a Tempfile" do
-#     expect(parse_file('http://www.google.ca')).to be_kind_of(Tempfile)
-#   end
+  xit "should return a Tempfile" do
+    expect(parse_file('http://www.google.ca')).to be_kind_of(Tempfile)
+  end
 
-# end
+end
 
 describe "Post" do
 
@@ -73,6 +73,10 @@ describe "Post" do
     expect(@post.id).to eq(11253321)
   end
 
+  it "should have a @title variable set to post title" do
+    expect(@post.title).to eq("How We Build Code at Netflix")
+  end
+
   it "should have a @comments variable which is an array" do
     expect(@post.comments).to be_kind_of(Array)
   end
@@ -91,6 +95,25 @@ describe "Post" do
     it "should create new comments" do
       expect(Comment).to receive(:new).at_least(:once)
       @post.get_comments
+    end
+
+  end
+
+  describe "add_comment" do
+
+    before :each do
+      @fake_comment = instance_double("Comment", :html => "post.html")
+    end 
+
+    it "should add the comment to the post's @comments array" do
+      @post.add_comment(@fake_comment)
+      expect(@post.comments.last).to eq(@fake_comment)
+    end
+
+    it "should increase the @comments array accordingly" do
+      length = @post.comments.length
+      @post.add_comment(@fake_comment)
+      expect(@post.comments.length).to eq(length + 1)
     end
 
   end
@@ -119,6 +142,22 @@ describe "Comment" do
 
   it "should have a @content variable set to the actual comment text" do
     expect(@first_comment.content). to eq("How do they 'externalize config' with respect to http://12factor.net/config?")
+  end
+
+end
+
+describe "display_output" do
+
+  before :each do
+    @fake_comment = instance_double("Comment", :content => "I'm a comment!")
+    @fake_post = instance_double("Post", :title => "My post title", :id => 1234242, :points => 43, :comments => [@fake_comment])
+  end
+
+  it "should send a pretty string to print_output" do
+    expect(display_output(@fake_post)).to eq("My post title
+  Post ID: 1234242. Points: 43
+  Number of comments: 1
+  Top comment: I'm a comment!")
   end
 
 end

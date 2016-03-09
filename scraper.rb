@@ -1,11 +1,14 @@
 require 'nokogiri'
 require 'open-uri'
 require_relative 'post_class'
+require_relative 'comment'
 
 def user_input(input)
-  if is_url?(input)
+  if is_url?(input[0])
     file = parse_file(input)
-    Post.new(file, input)
+    post = Post.new(file, input)
+    output = display_output(post)
+    print_output(output)
   else
     "Please enter a real URL"
   end
@@ -21,7 +24,18 @@ def is_url?(input)
 end
 
 def parse_file(url)
-  open(url)
+  open(url[0])
+end
+
+def display_output(post)
+  "#{post.title}
+  Post ID: #{post.id}. Points: #{post.points}
+  Number of comments: #{post.comments.length}
+  Top comment: #{post.comments[0].content}"
+end
+
+def print_output(str)
+  puts str
 end
 
 user_input(ARGV)
