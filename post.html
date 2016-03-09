@@ -1,0 +1,485 @@
+<html op="item"><head><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="news.css?XUlT833JlM9rhP2gUDw6">
+        <link rel="shortcut icon" href="favicon.ico">
+        <script type="text/javascript">
+function hide(id) {
+  var el = document.getElementById(id);
+  if (el) { el.style.visibility = 'hidden'; }
+}
+function vote(node) {
+  var v = node.id.split(/_/);
+  var item = v[1];
+  hide('up_'   + item);
+  hide('down_' + item);
+  var ping = new Image();
+  ping.src = node.href;
+  return false;
+  }
+    </script><title>How We Build Code at Netflix | Hacker News</title></head><body><center><table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+        <tr><td bgcolor="#ff6600"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px"><tr><td style="width:18px;padding-right:4px"><a href="http://www.ycombinator.com"><img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a></td>
+                  <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="brandname"><a href="news">Hacker News</a></b>
+              <a href="newest">new</a> | <a href="newcomments">comments</a> | <a href="show">show</a> | <a href="ask">ask</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a>            </span></td><td style="text-align:right;padding-right:4px;"><span class="pagetop">
+                              <a href="login?goto=item%3Fid%3D11253321">login</a>
+                          </span></td>
+              </tr></table></td></tr>
+<tr style="height:10px"></tr><tr><td><table border="0">
+        <tr class='athing'>
+      <td align="right" valign="top" class="title"><span class="rank"></span></td>      <td valign="top" class="votelinks"><center><a id="up_11253321" href="vote?for=11253321&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="title"><span class="deadmark"></span><a href="http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html">How We Build Code at Netflix</a><span class="sitebit comhead"> (<a href="from?site=netflix.com"><span class="sitestr">netflix.com</span></a>)</span></td></tr><tr><td colspan="2"></td><td class="subtext">
+        <span class="score" id="score_11253321">253 points</span> by <a href="user?id=hepha1979">hepha1979</a> <span class="age"><a href="item?id=11253321">3 hours ago</a></span>  | <a href="https://hn.algolia.com/?query=How%20We%20Build%20Code%20at%20Netflix&sort=byDate&dateRange=all&type=story&storyText=false&prefix&page=0">past</a> | <a href="https://www.google.com/search?q=How%20We%20Build%20Code%20at%20Netflix">web</a> | <a href="item?id=11253321">48 comments</a>              </td></tr>
+            <tr style="height:10px"></tr><tr><td colspan="2"></td><td>
+          <form method="post" action="comment"><input type="hidden" name="parent" value="11253321"><input type="hidden" name="goto" value="item?id=11253321"><input type="hidden" name="hmac" value="1f9b74681335425d517370c1f0f9bb11a3676822"><textarea name="text" rows="6" cols="60"></textarea>
+                <br><br><input type="submit" value="add comment"></form>
+      </td></tr>
+  </table><br><br>
+  <table border="0" class='comment-tree'>  <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="0"></td><td valign="top" class="votelinks"><center><a id="up_11254639" href="vote?for=11254639&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=neduma">neduma</a> <span class="age"><a href="item?id=11254639">8 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">How do they &#x27;externalize config&#x27; with respect to <a href="http:&#x2F;&#x2F;12factor.net&#x2F;config" rel="nofollow">http:&#x2F;&#x2F;12factor.net&#x2F;config</a>?<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254639&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="0"></td><td valign="top" class="votelinks"><center><a id="up_11254395" href="vote?for=11254395&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=vlucas">vlucas</a> <span class="age"><a href="item?id=11254395">43 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">For those wondering about how this applies to Node.js use a Netflix like myself, it&#x27;s in there towards the bottom of the article:<p>&gt; &quot;As Netflix grows and evolves, there is an increasing demand for our build and deploy toolset to provide first-class support for non-JVM languages, like JavaScript&#x2F;Node.js, Python, Ruby and Go. Our current recommendation for non-JVM applications is to use the Nebula ospackage plugin to produce a Debian package for baking, leaving the build and test pieces to the engineers and the platform’s preferred tooling. While this solves the needs of teams today, we are expanding our tools to be language agnostic.&quot;<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254395&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="0"></td><td valign="top" class="votelinks"><center><a id="up_11253498" href="vote?for=11253498&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=moondev">moondev</a> <span class="age"><a href="item?id=11253498">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Spinnaker is an amazing tool. Really makes it easy to confidently deploy applications via immutable infrastructure.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253498&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11253722" href="vote?for=11253722&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=sytse">sytse</a> <span class="age"><a href="item?id=11253722">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Immutable infrastructure is the future and it seems that even Netflix is planning to use containers for that: &quot;Containers provide an interesting potential solution to the last two challenges and we are exploring how containers can help improve our current build, bake, and deploy experience.&quot;<p>I think that the future of deployments means that it is closely integrated with your source code management. Every new  push builds a container that can go through the following steps:<p>1. Deployment (server with only test traffic)<p>2. Post-deploy test (smoke test)<p>3. Canary (part of the traffic)<p>4. Live &#x2F; multiregion deploy<p>5. Manual overrides <a href="http:&#x2F;&#x2F;techblog.netflix.com&#x2F;2015&#x2F;11&#x2F;global-continuous-delivery-with.html" rel="nofollow">http:&#x2F;&#x2F;techblog.netflix.com&#x2F;2015&#x2F;11&#x2F;global-continuous-delive...</a> &quot;Spinnaker also provides cluster management capabilities and provides deep visibility into an application’s cloud footprint. Via Spinnaker’s application view, you can resize, delete, disable, and even manually deploy new server groups using strategies like Blue-Green (or Red-Black as we call it at Netflix). You can create, edit, and destroy load balancers as well as security groups.&quot;<p>Also see <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;3286" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;3286</a><span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253722&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253770" href="vote?for=11253770&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=lwander">lwander</a> <span class="age"><a href="item?id=11253770">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Google is actively adding Kubernetes support as well: <a href="https:&#x2F;&#x2F;github.com&#x2F;spinnaker&#x2F;spinnaker&#x2F;issues&#x2F;707" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;spinnaker&#x2F;spinnaker&#x2F;issues&#x2F;707</a><span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253770&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253842" href="vote?for=11253842&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=chei0aiV">chei0aiV</a> <span class="age"><a href="item?id=11253842">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">&gt; Immutable infrastructure is the future<p>Are there any downsides to immutable infrastructure?<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253842&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11254060" href="vote?for=11254060&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11254060">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I&#x27;m on a team developing an immutable infrastructure solution with (Docker) containers at a large financial institution.  The biggest downsides so far:<p>* It can get complicated <i>very</i> quickly since it involves a lot of stages, systems, and <i>loads</i> of brand new tools where you&#x27;re unlikely to be able to hire existing talent (you <i>need</i> people who can just read the docs on a complicated tool&#x2F;architecture like Kubernetes and then start using it).<p>* Speaking of talent, you need developers who are reasonably well-versed in Linux systems administration.  Could your developers write a shell script that can configure every little aspect of a Linux host from packaging to authentication?  Your developers also need to understand some hard core topics of TCP&#x2F;IP (e.g. anycast), firewalls (e.g. port mapping), and DNS (TTLs, views, SRV records, and more).  They also need to be well-versed in security (e.g. the impact of running as root inside a container) and <i>especially</i> authentication (e.g. HMAC, securely storing shared secrets) and encryption (SSL, managing certificates, knowing which hashing algorithm to use)!<p>* Dealing with existing bureaucracy.  Especially rules and policies in regards to security.  For example, some people will think that containers and immutable VMs should be treated like regular hosts.  That can mean waiting <i>hours</i> for an inventory system to acknowledge their existence before you can put them into production.  Or having to wait 30 minutes after every container&#x2F;VM is brought up so that a security tool can perform a scan even though each container&#x2F;VM would be identical in every way and have already been scanned before production deployment.  Sigh.<p>Of course, a lot of that depends on where you work.  At my work right now the biggest challenge is the bureaucracy for certain.  If I can get containers classified differently than VMs then all my policy&#x2F;BAU problems will (likely) go away.  If I can&#x27;t get that then, really, there&#x27;s no point to our efforts since there would be no advantage to end users (the consumers of what we&#x27;re building).<p>I <i>may</i> be able to live with a pointless, half-hour-long security scan every time we bring up a new container but I absolutely cannot live with an 8-hour-long wait for a container to show up in our system-of-record (inventory system).<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254060&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="160"></td><td valign="top" class="votelinks"><center><a id="up_11254248" href="vote?for=11254248&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=jfindley">jfindley</a> <span class="age"><a href="item?id=11254248">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">We are doing something very similar (mesos rather than k8s), also in a financial organisation.<p>Our main issue is also security - as docker containers aren&#x27;t very good at actually containing, from a security PoV, we&#x27;re using SELinux MLS, assigning each container a unique SELinux level&#x2F;category (fedora-atomic sets this up nicely for you if anyone wants to try).<p>This is great for security, but breaks <i>so</i> <i>many</i> things - lots of the cutting edge work with docker and related tech isn&#x27;t done by people that care deeply about security, or really understand this sort of usecase, so we run into a huge amount of edgecases and bugs.  We spend a lot of time fighting this.<p>It also makes having a really good build&#x2F;deploy pipeline essential, as well as a good environment set up to reproduce and diagnose issues.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254248&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="200"></td><td valign="top" class="votelinks"><center><a id="up_11254449" href="vote?for=11254449&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=je42">je42</a> <span class="age"><a href="item?id=11254449">36 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Do you have links pointing at what docker containers leak from a security PoV ?<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254449&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="240"></td><td valign="top" class="votelinks"><center><a id="up_11254652" href="vote?for=11254652&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11254652">5 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">This largely depends on how you&#x27;re implementing them.  If you&#x27;re using Kubernetes, for example, all Docker containers being managed by Kubernetes can talk to each other without restrictions.  From each container&#x27;s perspective they&#x27;re part of a big, flat network with no firewalls between them.<p>So if you have a container running the database for client A that means that when client B spins up their little malicious container they can directly connect to client A&#x27;s DB.<p>That&#x27;s one way that Docker containers can &quot;leak&quot; (sort of).  Another way is that the filesystem for running containers is directly accessible from outside the container.  That means that anyone with the power to start&#x2F;stop containers has the power to read the filesystems for all other containers.<p>There <i>used</i> to be a problem with, &quot;root inside the container is the same as root outside the container&quot; but that was fixed with Docker 1.9 via the new UID mapping feature.  So the filesystem and processes running as UID 0 inside the container will actually be some high UID in the parent OS.  So unless you&#x27;re running Red Hat&#x27;s version of Docker (which is currently hard set to be Docker 1.8!) you can upgrade and solve that problem pretty quickly with a few tweaks.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <font color="#f6f6ef">-----</font>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="160"></td><td valign="top" class="votelinks"><center><a id="up_11254488" href="vote?for=11254488&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=pyvpx">pyvpx</a> <span class="age"><a href="item?id=11254488">30 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I&#x27;m a network engineer with a strong interest in container networking -- where does anycast come into play in your immutable infrastructure? I am highly curious!<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254488&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="200"></td><td valign="top" class="votelinks"><center><a id="up_11254624" href="vote?for=11254624&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11254624">10 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Right now for us it mostly just DNS using anycast <i>but</i> we <i>may</i> use anycast as part of a (forthcoming) microservices architecture.<p>The current popular method is to simply query a service discovery resolver of some sort (e.g. <a href="https:&#x2F;&#x2F;docs.docker.com&#x2F;swarm&#x2F;discovery&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.docker.com&#x2F;swarm&#x2F;discovery&#x2F;</a>) to figure out which server to query, say, the weather (very important in finance!  haha =).  That&#x27;s great and necessary if your architecture spans across your internal cloud, Amazon, and cloud-provider-of-the-day but if you have a fixed set of data centers where you know your applications will <i>always</i> be running (say, because of legal reasons =) then you can just use anycast <i>as long as you keep ports consistent</i>.<p>For most microservices deployments <i>I&#x27;d imagine</i> they would want their stuff to be accessible via a global DNS name and if they&#x27;re going to do that then they might as well take the next step and just standardize on a port as well.  If you have a single (global) name and a single port for an API why do you need service discovery (for that)?  You don&#x27;t.  You just need to make sure that when clients query your API that they don&#x27;t wind up using that one server you&#x27;ve got on the other side of the world on a 56k ISDN line (sadly yes, that does happen).<p>Having said that we may end up using popular service discovery tools <i>anyway</i> because they&#x27;re convenient and we can use them in horrible, do-as-I-say-not-as-I-do ways to hack legacy applications into containers =D<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254624&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="160"></td><td valign="top" class="votelinks"><center><a id="up_11254175" href="vote?for=11254175&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=matt_wulfeck">matt_wulfeck</a> <span class="age"><a href="item?id=11254175">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Sounds like Devops.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254175&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11254207" href="vote?for=11254207&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=sytse">sytse</a> <span class="age"><a href="item?id=11254207">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I think immutable infrastructure still requires a lot of tools and moving parts today. We&#x27;re spending a lot of time thinking on how to improve this. Two idea&#x27;s we have:<p>1. Deploy directly from GitLab to Kubernetes <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;14040" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;14040</a>
+2. Add a container registry to GitLab itself <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;3299" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;3299</a><p>Any comments or suggestions are welcome.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254207&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11254048" href="vote?for=11254048&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=phamilton">phamilton</a> <span class="age"><a href="item?id=11254048">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">You need to commit to it. You just toe the line. If you currently depend on being able to SSH into boxes and tail logs you will feel a lot of friction.<p>However, practices like those tend to be a crutch anyway.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254048&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11253883" href="vote?for=11253883&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=dminor">dminor</a> <span class="age"><a href="item?id=11253883">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Build wait times invoke 90&#x27;s nostalgia.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253883&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11253863" href="vote?for=11253863&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=moondev">moondev</a> <span class="age"><a href="item?id=11253863">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">It takes a while to bake the image, and storing thousands of images can add up. However containers can address both points.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253863&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11253607" href="vote?for=11253607&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=sanjeetsuhag">sanjeetsuhag</a> <span class="age"><a href="item?id=11253607">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Can some one explain to me what immutable means in terms of &quot;infrastructure&quot; ?<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253607&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253678" href="vote?for=11253678&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=davis_m">davis_m</a> <span class="age"><a href="item?id=11253678">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">It means updating infrastructure by making changes to a versioned service definition instead of on running instances.<p>Would you fix a software bug by editing the code on a running server and tell yourself that you will add it to the repository later?  Of course not.  You would end up with a running instance of the code that is impossible to replicate.<p>Immutable infrastructure applies that same idea to running services.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253678&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11253901" href="vote?for=11253901&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=seiji">seiji</a> <span class="age"><a href="item?id=11253901">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c5a"><i>Would you fix a software bug by editing the code on a running server and tell yourself that you will add it to the repository later?</i><p>Absolutely yes in the right circumstances (have you seen how <i>this</i> website works?).<p>Not every service needs to be written as &quot;scale out to a billion nodes&quot; architecture with eight layers of checks and balances between idea to production.<p>We can&#x27;t globally say &quot;everybody must use a 16 step verifiable app development pipeline&quot; when some people run 3 servers and others run 3 million.<p>(Plus, not all services are <i>stateless</i>!  Redeploying stateful servers is painful—you&#x27;ll be killing user experience.  Updating code live on a running server while maintaining internal continuity of state can maintain sessions&#x2F;caches&#x2F;game-state without annoying users by kicking out of their current flows.)<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253901&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253631" href="vote?for=11253631&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=detaro">detaro</a> <span class="age"><a href="item?id=11253631">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Roughly that services are not upgraded in place, but completely replaced, here by creating a new image and launching it in fresh instances, then shutting down the instances running old code. Makes sure that all instances are exactly the same, vs otherwise there might be differences between freshly created and upgraded ones etc.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253631&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253660" href="vote?for=11253660&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=matwood">matwood</a> <span class="age"><a href="item?id=11253660">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">An example would be whenever new version of an app is deployed an entirely new EC2 instance is started from a fixed image. The app is copied onto it and then load balancers are changed etc...<p>The image the EC2 instance is started from is immutable while it is running. Of course the image gets updated regularly by devops with security fixes, but the running production instance(s) is&#x2F;are never changed on the fly. Instead it is completely redeployed.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253660&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253871" href="vote?for=11253871&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11253871">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">The other replies here are great but let me give you the layman&#x27;s version of what &quot;immutable infrastructure&quot; means:<p>If it works for me it works for everyone.<p>You never patch or upgrade immutable infrastructure.  You just replace what you&#x27;ve got with a new VM or container.  Containers being preferred because they can be started &amp; stopped near instantaneously and there&#x27;s nothing like a virtual BIOS that could have different configurations like with VMs.<p>You don&#x27;t stand up a VM or container then &quot;log in to configure it&quot;.  Once the VM is &quot;up&quot; that&#x27;s it.  You&#x27;re done.  At that point you just need to point your load balancers&#x2F;DNS at the new stuff then take down the old stuff.<p>One interesting aspect of immutable infrastructure such as this is that it is completely incompatible with <i>loads</i> of existing security policies and what would have been considered &quot;best practices&quot; just a few years ago. For example, you might have a security policy that states that everything must be scanned within 30 days for malware&#x2F;out-of-date packages&#x2F;whatever.  Yet with immutable infrastructure your hosts or containers may only be up for a few days before being replaced!<p>So when your security team freaks out because none of your hosts&#x2F;containers are showing up in their systems you&#x27;ll have a <i>lot</i> of explaining to do =D<p>&quot;We need to scan your hosts so we can ensure that you&#x27;re installing security patches.&quot;<p>&quot;We don&#x27;t do that.&quot;<p>&quot;You don&#x27;t install security patches?!?&quot;<p>&quot;Yeah, well, you see...&quot;<p>Trust me when I say that trying to explain how it all works and why it&#x27;s more secure than old school deployments is <i>not</i> easy!<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253871&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11253983" href="vote?for=11253983&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=dastbe">dastbe</a> <span class="age"><a href="item?id=11253983">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">this is why your security team should be integrated into how you (securely!) build and deploy software. in this specific case, that would mean maintaining the OS layer Dockerfile and scanning the dependency tree for build artifacts.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253983&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="160"></td><td valign="top" class="votelinks"><center><a id="up_11254214" href="vote?for=11254214&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11254214">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Yeah, it&#x27;s actually a lot more complicated than that.  Let&#x27;s assume the security team creates the Dockerfile.  It&#x27;ll look like this:<p><pre><code>    FROM ubuntu
+    WORKDIR ${foo}   # WORKDIR &#x2F;bar
+    RUN developer_script.sh
+</code></pre>
+So now with each new container update you&#x27;d need someone from the security team to audit&#x2F;review `developer_script.sh`.  It&#x27;s kind of pointless if your goal is fast deployments.<p>If you just need to make sure your developers don&#x27;t make a mistake in terms of securely configuring their containers (and making sure to always use the latest software) then you simply scan them before the canary stage.  The problem there is, &quot;what are you looking for?&quot;<p>Also, there exists only <i>one</i> tool to scan Docker containers (OpenSCAP) and if your security team doesn&#x27;t like it, well, you&#x27;re screwed:  <a href="https:&#x2F;&#x2F;github.com&#x2F;OpenSCAP&#x2F;container-compliance" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;OpenSCAP&#x2F;container-compliance</a><p>The other problem is that OpenSCAP only checks the container&#x27;s packages for compliance.  It doesn&#x27;t actually scan the container&#x27;s filesystem for things like JREs and bundled libs.  So if you&#x27;re using Docker best practices by keeping your images as minimal as possible you may not even <i>have</i> a package tool inside your containers.  In that case how do you check for things like out-of-date versions of Java?<p>Another problem is you assume there&#x27;s some modicum of control over what&#x27;s inside the containers before they&#x27;re deployed.  We&#x27;re in charge of creating the <i>infrastructure</i> for running containers with the promise that end users (who would be various application teams) can make their own containers (or at least their own Dockerfiles) and deploy them on our infrastructure.<p>We can work with them to help develop, say, a Kubernetes pod config for their app but as far as <i>what their app is</i> or what gets bundled with it we&#x27;ll have no knowledge after the first successful deployment.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254214&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="200"></td><td valign="top" class="votelinks"><center><a id="up_11254369" href="vote?for=11254369&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=dastbe">dastbe</a> <span class="age"><a href="item?id=11254369">46 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I never said you need or should have the package tools inside your container, but you do need to be able to track the lineage of what was put into those containers so you can easily search for ex. deployed container revisions with an out of date Java version. This is where you need a team devoted to build that creates this kind of infrastructure. Otherwise, you end up with difficult to answer questions about your infrastructure.<p>tl;dr I assume there&#x27;s some control because there should be.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254369&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+          <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253623" href="vote?for=11253623&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=softawre">softawre</a> <span class="age"><a href="item?id=11253623">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">You build the VM <i>one time</i>, deploy it to dev.  If all tests pass, you deploy the exact same VM to test&#x2F;stage&#x2F;prod&#x2F;whatever.<p>It&#x27;s the diff between a new build (of the &quot;same code&quot;) for each environment versus building up the VM one and deploy that.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253623&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253664" href="vote?for=11253664&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=martinknafve">martinknafve</a> <span class="age"><a href="item?id=11253664">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Simplified: Instead of modifying a deployment by uninstalling the old software, updating the config files and installing a new version, you create a new virtual machine image with all you need and deploy instances of that. Even if you just want to change a setting in a file you deploy new virtual machines. There are variations of this such as using Docker.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253664&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11253684" href="vote?for=11253684&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=moondev">moondev</a> <span class="age"><a href="item?id=11253684">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">And the next step would be moving your config to something distributed like etcd or archaius<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253684&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253633" href="vote?for=11253633&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=hellofunk">hellofunk</a> <span class="age"><a href="item?id=11253633">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">The article actually discusses this directly.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253633&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253655" href="vote?for=11253655&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=moondev">moondev</a> <span class="age"><a href="item?id=11253655">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">A short summary would be that your infrastructure (instances) are replaced for every deployment instead of updated in place. This is all done via continuous delivery tools (spinnaker, jenkins etc) and is very important to be able to easily scale microservices horizontally.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253655&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11253658" href="vote?for=11253658&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=boundlessdreamz">boundlessdreamz</a> <span class="age"><a href="item?id=11253658">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">As far as I understood it, you don&#x27;t make changes to running servers. Say you need to update a package, you spin up a new server with the updated package and once the traffic is migrated to new server, you spin down the old server.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253658&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254122" href="vote?for=11254122&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=estefan">estefan</a> <span class="age"><a href="item?id=11254122">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c5a">It means that your releases take forever because you have to bake new images each time you want to push out a new release.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254122&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="0"></td><td valign="top" class="votelinks"><center><a id="up_11253432" href="vote?for=11253432&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=mattiemass">mattiemass</a> <span class="age"><a href="item?id=11253432">3 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Very cool article. Amazing how much tooling Netflix has built themselves.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253432&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11253899" href="vote?for=11253899&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11253899">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">What&#x27;s amazing is that Netflix <i>let</i> their teams develop solutions from scratch.  Usually at big companies when their developers say something like, &quot;can&#x27;t we just build a solution ourselves?&quot; they&#x27;re laughed out of the room or, more likely, marked down as candidates in the next round of layoffs.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253899&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254011" href="vote?for=11254011&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=chatmasta">chatmasta</a> <span class="age"><a href="item?id=11254011">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">It helps that they have repeatedly proven this strategy works. When the CTO goes to the CEO and says &quot;we&#x27;re going to build this, not buy it,&quot; the CEO obviously trusts his decision making because he&#x27;s seen him successfully execute his strategy so many times.<p>It sounds like Netflix engineering culture is built a lot around trust. Management trusts that only top engineering talent works there, and the sink-or-swim culture, coupled with performance bonuses and a rising stock price, ensures that the engineers are making the best decisions <i>for the company.</i> It&#x27;s a lot easier to approve a &quot;build&quot; vs &quot;buy&quot; decision when you know that the interests of the engineers pushing for it are actually aligned with the company business interests.<p>Contrast this to a company with a large separation of incentives between the stock price and the engineers. In that scenario you end up with a bunch of engineers who are bored and want to prematurely optimize systems because there is no clear personal cost to doing so.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254011&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="120"></td><td valign="top" class="votelinks"><center><a id="up_11254680" href="vote?for=11254680&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=riskable">riskable</a> <span class="age"><a href="item?id=11254680">1 minute ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">&gt; It helps that they have repeatedly proven this strategy works.<p>I laughed at this because you can&#x27;t &quot;repeatedly prove&quot; you&#x27;re capable of developing your own solutions if you&#x27;re never allowed to do it in the first place!<p>The enterprise mantra is: COTS or it doesn&#x27;t happen.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <font color="#f6f6ef">-----</font>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254217" href="vote?for=11254217&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=jdblair">jdblair</a> <span class="age"><a href="item?id=11254217">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Fairly new Netflix employee here (started last November). From what I can see so far the &quot;highly aligned, loosely coupled&quot; culture here works very well. The company has a clear focus, we all get it, and we all work to make it happen. Teams have freedom to accomplish their goals they best way they see fit. There is quite simply not a lot of focus on particular means, the focus is on outcomes.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254217&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254445" href="vote?for=11254445&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=goalieca">goalieca</a> <span class="age"><a href="item?id=11254445">37 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">&quot;let&#x27;s wait for the community to fix the opensource code we rely on&quot;.<p>I&#x27;ve heard this a lot in my career (even academia)<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254445&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254443" href="vote?for=11254443&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=ArkyBeagle">ArkyBeagle</a> <span class="age"><a href="item?id=11254443">37 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Netflix cares about &quot;it works&quot; and they have to have tools.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254443&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254345" href="vote?for=11254345&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=draw_down">draw_down</a> <span class="age"><a href="item?id=11254345">50 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I&#x27;ve been in <i>so</i> many places where that response would be the correct one. I&#x27;ve spent a lot of time decommissioning some rather horrible outcomes of &quot;can&#x27;t we just build it ourselves&quot;.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254345&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11253497" href="vote?for=11253497&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=hitekker">hitekker</a> <span class="age"><a href="item?id=11253497">2 hours ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I believe at least some parts of the tooling were developed by an embedded team from Pivotal Labs.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253497&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+      <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="0"></td><td valign="top" class="votelinks"><center><a id="up_11253946" href="vote?for=11253946&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=Scarbutt">Scarbutt</a> <span class="age"><a href="item?id=11253946">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">What are the reasons for Netflix choosing nodejs for their front-end server and not java like in their back-end?<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253946&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11254657" href="vote?for=11254657&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=error54">error54</a> <span class="age"><a href="item?id=11254657">5 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Since all Frontend code is written in JavaScript, it makes sense to have the server code written in JavaScript as well as we do quite a bit of work on the server. Also, we do serve isomorphic views so Node is a big help in that regards.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254657&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11254642" href="vote?for=11254642&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=aaronblohowiak">aaronblohowiak</a> <span class="age"><a href="item?id=11254642">7 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Freedom and Responsibility! Teams are free to choose the tools that work for them. Netflix technical direction operates more like an ecosystem than a hierarchy.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254642&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+    <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="40"></td><td valign="top" class="votelinks"><center><a id="up_11253957" href="vote?for=11253957&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=salehenrahman">salehenrahman</a> <span class="age"><a href="item?id=11253957">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I&#x27;m guessing it&#x27;s their use of React both on the front-end and back-end.<span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11253957&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="80"></td><td valign="top" class="votelinks"><center><a id="up_11254673" href="vote?for=11254673&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=dominotw">dominotw</a> <span class="age"><a href="item?id=11254673">2 minutes ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">there is also this <a href="https:&#x2F;&#x2F;github.com&#x2F;Netflix&#x2F;falcor" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Netflix&#x2F;falcor</a><span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254673&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+        <tr class='athing'><td><table border="0">  <tr><td class='ind'><img src="s.gif" height="1" width="0"></td><td valign="top" class="votelinks"><center><a id="up_11254251" href="vote?for=11254251&amp;dir=up&amp;goto=item%3Fid%3D11253321"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="user?id=oconnore">oconnore</a> <span class="age"><a href="item?id=11254251">1 hour ago</a></span> <span class="par"></span><span class="deadmark"></span>          <span class='storyon'></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Another Spinnaker: <a href="http:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1103.2408.pdf" rel="nofollow">http:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1103.2408.pdf</a><span>
+              </span><div class='reply'>        <p><font size="1">
+                      <u><a href="reply?id=11254251&amp;goto=item%3Fid%3D11253321">reply</a></u>
+                  </font>
+      </div></td></tr>
+      </table></td></tr>
+  </table><br><br>
+</td></tr>
+<tr><td><img src="s.gif" height="10" width="0"><table width="100%" cellspacing="0" cellpadding="1"><tr><td bgcolor="#ff6600"></td></tr></table><br><center><a href="https://www.ycombinator.com/apply/">
+      Applications are open for YC Summer 2016
+      </a></center><br><center><span class="yclinks"><a href="newsguidelines.html">Guidelines</a>
+        | <a href="newsfaq.html">FAQ</a>
+        | <a href="mailto:hn@ycombinator.com">Support</a>
+        | <a href="https://github.com/HackerNews/API">API</a>
+        | <a href="security.html">Security</a>
+        | <a href="lists">Lists</a>
+        | <a href="bookmarklet.html">Bookmarklet</a>
+        | <a href="dmca.html">DMCA</a>
+        | <a href="http://www.ycombinator.com/apply/">Apply to YC</a>
+        | <a href="mailto:hn@ycombinator.com">Contact</a></span><br><br><form method="get" action="//hn.algolia.com/">Search:
+          <input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false"></form>
+            </center></td></tr>      </table></center></body></html>
