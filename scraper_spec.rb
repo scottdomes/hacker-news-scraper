@@ -81,10 +81,6 @@ describe "Post" do
     expect(@post.title).to eq("How We Build Code at Netflix")
   end
 
-  it "should raise an ImproperPostError if no title found" do
-
-  end
-
   it "should have a @comments variable which is an array" do
     expect(@post.comments).to be_kind_of(Array)
   end

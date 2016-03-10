@@ -17,7 +17,23 @@ class UserInput
 
   def create_post(input)
     file = parse_file(input)
-    Post.new(file, input)
+    post_type = check_post_type(input)
+    case post_type
+    when "reddit"
+      RedditPost.new(file, input)
+    when "hackernews"
+      HackerNewsPost.new(file, input)
+    else
+      puts "Post type not found!"
+    end
+  end
+
+  def check_post_type(url)
+    if url[0].include?("reddit")
+      "reddit"
+    elsif url[0].include?("ycombinator")
+      "hackernews"
+    end
   end
 
   def url?(input)
@@ -35,7 +51,9 @@ class UserInput
 
   def display_output(post)
     title = "#{post.title}"
-    id = "Post ID: " + "#{post.id}".colorize(:blue) + ". Points: " + "#{post.points}".colorize(:green)
+    if post.class == HackerNewsPost
+      id = "Post ID: " + "#{post.id}".colorize(:blue) + ". Points: " + "#{post.points}".colorize(:green)
+    end
     num_comments = "Number of comments: " + "#{post.comments.length}".red
     top_com = "Top comment: #{post.comments[0].content}"
     print_output(title, id, num_comments, top_com)
@@ -43,7 +61,7 @@ class UserInput
 
   def print_output(title, id, num_comments, top_com)
     puts title.colorize(:red)
-    puts id
+    puts id unless id.nil?
     puts num_comments
     puts top_com
   end

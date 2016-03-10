@@ -10,11 +10,7 @@ class Post
   def initialize(file, url)
     @page = open_file(file)
     @url = url
-    @points = get_points 
-    @id = get_id
-    @title = get_title
     @comments = []
-    get_comments
   end
 
   def open_file(file)
@@ -22,14 +18,67 @@ class Post
     Nokogiri::HTML(File.open(file))
   end
 
+  def add_new_comment(comment)
+    comments << comment
+  end
+
+  def add_all_comments(arr)
+    arr.each do |comment|
+      comments << Comment.new(comment)
+    end
+    comments
+  end
+
+end
+
+class RedditPost < Post
+
+  def initialize(file, url)
+    super
+    @title = get_title
+    get_comments
+  end
+
   def get_title
-    result = page.search('.title > a').map { |element| element.inner_text }[0]
+    result = @page.search('.title > .title').map { |element| element.inner_text }[0]
     raise ImproperPostError, "No title found!" if result.nil?
+    result
+  end
+
+  def get_comments
+    page_comments = @page.search('.commentarea  .comment')
+    add_all_comments(page_comments)
+  end
+
+  def add_all_comments(arr)
+    arr.each do |comment|
+      comments << RedditComment.new(comment)
+    end
+    comments
+  end
+
+end
+
+class HackerNewsPost < Post
+
+  def initialize(file, url)
+    super(file, url)
+    @points = get_points 
+    @id = get_id
+    @title = get_title
+    get_comments
+  end
+
+  def get_title
+    result = @page.search('.title > a').map { |element| element.inner_text }[0]
+    raise ImproperPostError, "No title found!" if result.nil?
+    result
   end
 
   def get_points
-    result = page.search('.subtext > .score').map { |span| span.inner_text }[0]
+    result = @page.search('.subtext > .score').map { |span| span.inner_text }[0]
     raise ImproperPostError, "No points found!" if result.nil?
+    result
   end
 
   def get_id
@@ -40,21 +89,8 @@ class Post
 
   def get_comments
     page_comments = @page.search('.comment-tree .athing')
-    page_comments.each do |comment|
-      comments << Comment.new(comment)
-    end
-    comments
-  end
-
-  def add_comment(comment)
-    comments << comment
+    add_all_comments(page_comments)
   end
 
 end
 
-class Echo_Post 
-
-end
-
-# post = Post.new('post.html', 'http://post.com')
-# post.get_comments.inspect
