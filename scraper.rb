@@ -23,6 +23,8 @@ class UserInput
       RedditPost.new(file, input)
     when "hackernews"
       HackerNewsPost.new(file, input)
+    when "echojs"
+      EchoJSPost.new(file, input)
     else
       puts "Post type not found!"
     end
@@ -33,6 +35,8 @@ class UserInput
       "reddit"
     elsif url[0].include?("ycombinator")
       "hackernews"
+    elsif url[0].include?("echojs")
+      "echojs"
     end
   end
 

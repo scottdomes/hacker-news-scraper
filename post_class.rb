@@ -14,7 +14,7 @@ class Post
   end
 
   def open_file(file)
-    raise NoFileError, "File not found!" if !File.file?(file)
+    # raise NoFileError, "File not found!" if !File.file?(file)
     Nokogiri::HTML(File.open(file))
   end
 
@@ -92,5 +92,40 @@ class HackerNewsPost < Post
     add_all_comments(page_comments)
   end
 
+  def add_all_comments(arr)
+    arr.each do |comment|
+      comments << Comment.new(comment)
+    end
+    comments
+  end
+
 end
 
+class EchoJSPost < Post
+
+  def initialize(file, url)
+    super(file, url)
+    @title = get_title
+    get_comments
+  end
+
+  def get_title
+    result = @page.search('h2 a').map { |element| element.inner_text }[0]
+    raise ImproperPostError, "No title found!" if result.nil?
+    result
+  end
+
+  def get_comments
+    page_comments = @page.search('.comment')
+    puts page_comments
+    add_all_comments(page_comments)
+  end
+
+  def add_all_comments(arr)
+    arr.each do |comment|
+      comments << EchoJSComment.new(comment)
+    end
+    comments
+  end
+
+end
