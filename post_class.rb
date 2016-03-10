@@ -1,4 +1,5 @@
 require 'pry'
+require 'asciiart'
 
 class NoFileError < StandardError
 end
@@ -12,7 +13,6 @@ class Post
   def initialize(file, url)
     @page = open_file(file)
     @url = url
-    @comments = []
   end
 
   def open_file(file)
@@ -37,6 +37,7 @@ class RedditPost < Post
 
   def initialize(file, url)
     super
+    @comments = []
     @title = get_title
     get_comments
   end
@@ -65,6 +66,7 @@ class HackerNewsPost < Post
 
   def initialize(file, url)
     super(file, url)
+    @comments = []
     @points = get_points 
     @id = get_id
     @title = get_title
@@ -108,6 +110,7 @@ class EchoJSPost < Post
   def initialize(file, url)
     super(file, url)
     @title = get_title
+    @comments = []
     get_comments
   end
 
@@ -133,10 +136,12 @@ end
 
 class ImgurPost < Post
 
+  attr_reader :image
+
   def initialize(file, url)
     super(file, url)
     @title = get_title
-    get_comments
+    @image = get_image
   end
 
   def get_title
@@ -145,17 +150,10 @@ class ImgurPost < Post
     result
   end
 
-  def get_comments
-    page_comments = @page.search('div.comment')
-    # raise ImproperPostError, "No comments found!" if page_comments[0].nil?
-    add_all_comments(page_comments)
-  end
-
-  def add_all_comments(arr)
-    arr.each do |comment|
-      comments << ImgurComment.new(comment)
-    end
-    comments
+  def get_image
+    url = @page.search('.post-image img').map { |img| img['src']}[0]
+    ascii = AsciiArt.new("http:" + url)
+    ascii.to_ascii_art(width: 50)
   end
 
 end

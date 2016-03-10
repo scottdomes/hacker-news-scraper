@@ -71,16 +71,22 @@ class UserInput
     if post.class == HackerNewsPost
       id = "Post ID: " + "#{post.id}".colorize(:blue) + ". Points: " + "#{post.points}".colorize(:green)
     end
-    num_comments = "Number of comments: " + "#{post.comments.length}".red
-    top_com = "Top comment: #{post.comments[0].content}"
-    print_output(title, id, num_comments, top_com)
+    if post.class != ImgurPost
+      num_comments = "Number of comments: " + "#{post.comments.length}".red
+      top_com = "Top comment: #{post.comments[0].content}"
+    else
+      #print ascii picture
+      img = post.image
+    end
+    print_output(title, id, num_comments, top_com, img)
   end
 
-  def print_output(title, id, num_comments, top_com)
+  def print_output(title, id, num_comments, top_com, img)
     puts title.colorize(:red)
     puts id unless id.nil?
-    puts num_comments
-    puts top_com
+    puts num_comments unless num_comments.nil?
+    puts top_com unless top_com.nil?
+    puts img unless img.nil?
   end
 
 end
