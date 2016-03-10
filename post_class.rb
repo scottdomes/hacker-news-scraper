@@ -1,8 +1,14 @@
+class NoFileError < StandardError
+end
+
+class ImproperPostError < StandardError
+end
+
 class Post
   attr_reader :page, :url, :points, :id, :comments, :title
 
   def initialize(file, url)
-    @page = Nokogiri::HTML(File.open(file))
+    @page = open_file(file)
     @url = url
     @points = get_points 
     @id = get_id
@@ -11,16 +17,24 @@ class Post
     get_comments
   end
 
+  def open_file(file)
+    raise NoFileError, "File not found!" if !File.file?(file)
+    Nokogiri::HTML(File.open(file))
+  end
+
   def get_title
-    page.search('.title > a').map { |element| element.inner_text }[0]
+    result = page.search('.title > a').map { |element| element.inner_text }[0]
+    raise ImproperPostError, "No title found!" if result.nil?
   end
 
   def get_points
-    page.search('.subtext > .score').map { |span| span.inner_text }[0]
+    result = page.search('.subtext > .score').map { |span| span.inner_text }[0]
+    raise ImproperPostError, "No points found!" if result.nil?
   end
 
   def get_id
     id = page.search('.subtext > .score').map { |span| span['id'] }
+    raise ImproperPostError, "No id found!" if id.nil?
     id[0].scan(/\d+/)[0].to_i
   end
 
@@ -35,6 +49,10 @@ class Post
   def add_comment(comment)
     comments << comment
   end
+
+end
+
+class Echo_Post 
 
 end
 

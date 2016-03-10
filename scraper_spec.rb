@@ -8,8 +8,8 @@ describe "#user_input" do
   # xit "should receive ARGV as its input" do
   # end
 
-  # xit "should call is_url?" do
-  #   expect(is_url?("sdfss")).to eq(true || false)
+  # xit "should call url?" do
+  #   expect(url?("sdfss")).to eq(true || false)
   # end
 
   xit "should create a new Post object and pass the URL- if the URL is valid" do
@@ -18,7 +18,7 @@ describe "#user_input" do
   end
 
   it "should return an error message if the URL is not valid" do
-    expect(user_input("foo")).to eq("Please enter a real URL")
+    expect(UserInput.new.user_input("foo")).to eq("Please enter a real URL")
   end
 
   # it "should return the Post object if created" do
@@ -27,14 +27,14 @@ describe "#user_input" do
 
 end
 
-describe "#is_url?" do
+describe "#url?" do
 
   it "should return false if ARGV is not a URL" do
-    expect(is_url?("foo")).to eq(false)
+    expect(UserInput.new.url?("foo")).to eq(false)
   end
 
   it "should return true if ARGV is a URL" do
-    expect(is_url?("http://www.google.ca")).to eq(true)
+    expect(UserInput.new.url?("http://www.google.ca")).to eq(true)
   end
 
 end
@@ -61,6 +61,10 @@ describe "Post" do
     expect(@post.page).to be_kind_of(Nokogiri::HTML::Document)
   end
 
+  it "should raise NoFileError if the file doesn't exist" do
+    expect{@post.open_file('fake.html')}.to raise_error(NoFileError, "File not found!")
+  end
+
   it "should have a @url variable equal to the passed URL" do
     expect(@post.url).to eq("http://post.com")
   end
@@ -75,6 +79,10 @@ describe "Post" do
 
   it "should have a @title variable set to post title" do
     expect(@post.title).to eq("How We Build Code at Netflix")
+  end
+
+  it "should raise an ImproperPostError if no title found" do
+
   end
 
   it "should have a @comments variable which is an array" do
@@ -149,15 +157,19 @@ end
 describe "display_output" do
 
   before :each do
+    @user = UserInput.new
     @fake_comment = instance_double("Comment", :content => "I'm a comment!")
     @fake_post = instance_double("Post", :title => "My post title", :id => 1234242, :points => 43, :comments => [@fake_comment])
   end
 
-  it "should send a pretty string to print_output" do
-    expect(display_output(@fake_post)).to eq("My post title
-  Post ID: 1234242. Points: 43
-  Number of comments: 1
-  Top comment: I'm a comment!")
+  xit "should send a pretty string to print_output" do
+  # expect(display_output(@fake_post)).to eq("My post title
+  # Post ID: 1234242. Points: 43
+  # Number of comments: 1
+  # Top comment: I'm a comment!")
+    
+    expect(@user).to receive(print_output).with("My post title", "Post ID: 1234242. Points: 43", "Number of comments: 1", "Top comment: I'm a comment!")
+    @user.display_output(@fake_post)
   end
 
 end
