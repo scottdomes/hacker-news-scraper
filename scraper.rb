@@ -25,6 +25,8 @@ class UserInput
       HackerNewsPost.new(file, input)
     when "echojs"
       EchoJSPost.new(file, input)
+    when "imgur"
+      ImgurPost.new(file, input)
     else
       puts "Post type not found!"
     end
@@ -37,6 +39,8 @@ class UserInput
       "hackernews"
     elsif url[0].include?("echojs")
       "echojs"
+    elsif url[0].include?("imgur")
+      "imgur"
     end
   end
 

@@ -130,3 +130,32 @@ class EchoJSPost < Post
   end
 
 end
+
+class ImgurPost < Post
+
+  def initialize(file, url)
+    super(file, url)
+    @title = get_title
+    get_comments
+  end
+
+  def get_title
+    result = @page.search('.post-title').map { |element| element.inner_text }[0]
+    raise ImproperPostError, "No title found!" if result.nil?
+    result
+  end
+
+  def get_comments
+    page_comments = @page.search('div.comment')
+    # raise ImproperPostError, "No comments found!" if page_comments[0].nil?
+    add_all_comments(page_comments)
+  end
+
+  def add_all_comments(arr)
+    arr.each do |comment|
+      comments << ImgurComment.new(comment)
+    end
+    comments
+  end
+
+end
