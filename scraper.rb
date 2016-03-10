@@ -50,7 +50,16 @@ class UserInput
   end
 
   def parse_file(url)
-    open(url[0])
+    file = open(url[0])
+    if file.class == StringIO
+      tempfile = File.new('temp', 'w')
+      tempfile.binmode
+      File.open(tempfile, 'w') { |temp| temp.write(file.read) }
+      tempfile
+    else
+      file
+    end
+
   end
 
   def display_output(post)

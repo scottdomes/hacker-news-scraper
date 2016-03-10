@@ -1,3 +1,5 @@
+require 'pry'
+
 class NoFileError < StandardError
 end
 
@@ -14,7 +16,7 @@ class Post
   end
 
   def open_file(file)
-    # raise NoFileError, "File not found!" if !File.file?(file)
+    raise NoFileError, "File not found!" if !File.file?(file)
     Nokogiri::HTML(File.open(file))
   end
 
@@ -117,7 +119,6 @@ class EchoJSPost < Post
 
   def get_comments
     page_comments = @page.search('.comment')
-    puts page_comments
     add_all_comments(page_comments)
   end
 
